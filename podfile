@@ -1,0 +1,7 @@
+platform :ios,'8.0'
+pod 'RESideMenu'
+pod 'SDWebImage'
+pod 'SVProgressHUD'
+pod 'IQKeyboardManager'
+pod 'AFNetworking','~> 2.6.3'
+
