@@ -1,0 +1,18 @@
+
+/* Class = "UINavigationItem"; title = "个人中心"; ObjectID = "7b5-pH-LMH"; */
+"7b5-pH-LMH.title" = "个人中心";
+
+/* Class = "UIButton"; normalTitle = "我的帖子"; ObjectID = "BXf-DK-oUy"; */
+"BXf-DK-oUy.normalTitle" = "我的帖子";
+
+/* Class = "UITextField"; text = "regqer"; ObjectID = "CKs-XO-jii"; */
+"CKs-XO-jii.text" = "regqer";
+
+/* Class = "UIBarButtonItem"; title = "分享"; ObjectID = "MU4-Hz-JuJ"; */
+"MU4-Hz-JuJ.title" = "分享";
+
+/* Class = "UIButton"; normalTitle = "退出登录"; ObjectID = "gQu-EG-gTa"; */
+"gQu-EG-gTa.normalTitle" = "退出登录";
+
+/* Class = "UIButton"; normalTitle = "我的回复"; ObjectID = "tLz-l4-VNd"; */
+"tLz-l4-VNd.normalTitle" = "我的回复";

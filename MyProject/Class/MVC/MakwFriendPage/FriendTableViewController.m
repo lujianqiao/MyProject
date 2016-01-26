@@ -7,8 +7,14 @@
 //
 
 #import "FriendTableViewController.h"
+#import "FriendPageModel.h"
+#import "FriendTableViewCell.h"
+#import "LIstDetailViewController.h"
 
-@interface FriendTableViewController ()
+@interface FriendTableViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property(nonatomic,strong)NSMutableArray * dataArr;
+@property(nonatomic,strong)UIView * backgorundview;
 
 @end
 
@@ -16,22 +22,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [SVProgressHUD dismiss];
     [self customNaviBarButton];
     [self requestData];
+  //  self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1];
+   self.backgorundview = [[UIView alloc]initWithFrame:self.view.bounds];
+    self.backgorundview.backgroundColor = [UIColor whiteColor];
+    [self.tableView addSubview:self.backgorundview];
+    self.tableView.showsVerticalScrollIndicator = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(NSMutableArray *)dataArr
+{
+    if (_dataArr==nil) {
+        _dataArr = @[].mutableCopy;
+    }
+    return _dataArr;
+}
+
+
 //定制导航栏按钮
 -(void)customNaviBarButton
 {
     //获取视图控制器的UINavigationItem
     UINavigationItem * naviItem = self.navigationItem;
-    //左边按钮
-    UIBarButtonItem * leftButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:nil action:nil];
-    naviItem.leftBarButtonItem = leftButtonItem;
+//    //左边按钮
+//    UIBarButtonItem * leftButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:nil action:nil];
+//    naviItem.leftBarButtonItem = leftButtonItem;
     //右边按钮
     UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"发帖" style:UIBarButtonItemStylePlain target:nil action:nil];
     naviItem.rightBarButtonItem = rightButtonItem;
@@ -39,77 +63,90 @@
 
 -(void)requestData
 {
+   [SVProgressHUD showWithStatus:@"正在加载"];
     AFHTTPRequestOperationManager * requestManager = [AFHTTPRequestOperationManager manager];
     requestManager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     requestManager.responseSerializer.acceptableContentTypes= [NSSet setWithObject:@"application/json"];
     
-    [requestManager.requestSerializer setValue:@"JSESSIONID=87BA40E293A70E7B784D70AE7E78F610" forHTTPHeaderField:@"Cookie"];
+    [requestManager.requestSerializer setValue:@"JSESSIONID=C4DB20F2D22566A7079D894A53FCF3F0" forHTTPHeaderField:@"Cookie"];
     
-    NSString * url=@"http://121.43.121.176/BlueCollar/services/posts/list";
-    [requestManager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+  //  NSString * url=@"http://121.43.121.176/BlueCollar/services/posts/list";
+    [requestManager POST:LISTURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //参数一：AFN http请求操作
         //参数二：
-        NSLog(@"responseObject====%@",responseObject);
-
+        
+        NSDictionary * Dict = responseObject[@"data"];
+        NSArray * modelArr = Dict[@"Postses"];
+        
+        for (NSDictionary * modelDict in modelArr) {
+            FriendPageModel * model = [[FriendPageModel alloc]init];
+            [model setValuesForKeysWithDictionary:modelDict];
+            [self.dataArr addObject:model];
+            
+        }
         
         NSData *d = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
         
         NSString *s = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
+        NSLog(@"responseObject====%@",s);
+
         //创建模型对象
        ;
         //-------------------------刷新UITableView，在主线程中刷新
         dispatch_async(dispatch_get_main_queue(),^
                        {
+                           [self.tableView reloadData];
+                           [SVProgressHUD showSuccessWithStatus:@"加载成功"];
+                           
+                           [UIView animateWithDuration:1 animations:^{
+                        [self.backgorundview removeFromSuperview]; 
+                           }];
+         
+                           [SVProgressHUD dismiss];
                        });
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         //
         //
         NSLog(@"%@",error.localizedDescription);
     }];
-
-    
-    
-//    NSURLSession * urlSession=[NSURLSession sharedSession];
-//    //URL地址
-//    NSString * url=@"http://121.43.121.176/BlueCollar/services/posts/list";
-//    //创建请求
-//    NSURLRequest * request=[NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-//
-//    NSURLSessionDataTask * task=[urlSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        if (!error)
-//        {
-//            NSDictionary * dataDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//            
-//            //   NSLog(@"请求数据位===%@",dataDict);
-//            NSLog(@"dataDict=====%@",dataDict);
-//            //取出数据
-//          
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                
-//            });
-//            
-//        }
-//    }];
-//    [task resume];
-    
-
     
 }
 
 
-#pragma mark - Table view data source
+#pragma mark - Tableviewdatasource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    
+    return self.dataArr.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * str = @"cellID";
+    
+    FriendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:str forIndexPath:indexPath];
+    
+//    if (cell==nil) {
+//        cell = [[FriendTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:str];
+//    }
+    
+    FriendPageModel * model = self.dataArr[indexPath.row];
+    cell.model = model;
+    cell.layer.cornerRadius = 10;
+    return cell;
+
+      
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LIstDetailViewController * listVC = [[LIstDetailViewController alloc]init];
+    listVC.hidesBottomBarWhenPushed = YES;
+    listVC.model = self.dataArr[indexPath.row];
+    listVC.title = @"帖子";
+    [self.navigationController pushViewController:listVC animated:YES];
 }
 
 @end

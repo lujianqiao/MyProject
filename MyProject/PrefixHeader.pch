@@ -10,12 +10,32 @@
 #define MyProject_PrefixHeader_pch
 
 //帖子列表URL
-#define LISTURL @"http://121.43.121.176/BlueCollar/services/posts/myList"
+#define LISTURL @"http://www.xnljl.com/BlueCollar/services/posts/list"
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//工种列表
+#define JOBLIST @"http://121.43.121.176/BlueCollar/services/job/getlist"
+
+//公告列表
+#define PUBLICNOTIC @"http://121.43.121.176/BlueCollar/services/notice/getlist"
+
+//广告列表
+#define ADCLIST @"http://www.xnljl.com/BlueCollar/services/adv/list"
+
+//工种列表
+#define WORKTYPE @"http://www.xnljl.com/BlueCollar/services/getWorkType"
+
+//工种地点列表
+#define WORKPLACE @"http://www.xnljl.com/BlueCollar/services/getProvince/"
+#define WORKPLACEdETAIL @"http://www.xnljl.com/BlueCollar/services/getCity?provinceId="
+
+//薪资列表
+#define WAGELIST @"http://www.xnljl.com/BlueCollar/services/getSalary"
+
+
 #define  screenSize [UIScreen mainScreen].bounds.size
 
 #import <AFNetworking.h>
+#import <SVProgressHUD.h>
+#import <BmobSDK/Bmob.h>
 
 #endif

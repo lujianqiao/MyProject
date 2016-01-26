@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.0.4)
   - AFNetworking (2.6.3):
     - AFNetworking/NSURLConnection (= 2.6.3)
     - AFNetworking/NSURLSession (= 2.6.3)
@@ -20,25 +21,39 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BmobSDK (1.6.6)
   - IQKeyboardManager (3.3.4)
+  - JSAnimatedImagesView (1.0.0):
+    - MSWeakTimer (~> 1.0)
+  - MSWeakTimer (1.1.0)
   - RESideMenu (4.0.7)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - SVProgressHUD (1.1.3)
+  - UMengSocial (4.4)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.6.3)
+  - ActionSheetPicker-3.0
+  - AFNetworking
+  - BmobSDK
   - IQKeyboardManager
+  - JSAnimatedImagesView
   - RESideMenu
   - SDWebImage
   - SVProgressHUD
+  - UMengSocial (~> 4.3)
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 860466cb4a66854e6acb590071ecee404b48f49d
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  BmobSDK: c896d4ff3986f2b4fc8406fb2b801230f7419878
   IQKeyboardManager: ac803e61e5b50efae6b3aeedd95a02c7c7d3b2b3
+  JSAnimatedImagesView: d5c5f561280171ce13f1f08ba9834c47a1f27bfc
+  MSWeakTimer: 9426150f933b80ed3acf3f6d228e4b61f0e303c8
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
 
 COCOAPODS: 0.39.0

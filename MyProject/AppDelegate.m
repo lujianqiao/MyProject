@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
+#import "UMSocial.h"
+#import "NewFeatureImgsViewController.h"
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,8 +20,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [UMSocialData setAppKey:@"56a088b567e58e8baa0001d6"];
+    [Bmob registerWithAppKey:@"39da7ef344e21bb0b078af2e2aa5db15"];
+
+    
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController=[[RootViewController alloc]init];
+    UIStoryboard * sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController * root = [sb instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    NewFeatureImgsViewController * new = [[NewFeatureImgsViewController alloc]init];
+    NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
+    NSString * toWhere = [user objectForKey:@"feature"];
+    if ([toWhere isEqualToString:@"feature"]) {
+        
+        self.window.rootViewController=root;
+
+    }
+    else
+    {
+        self.window.rootViewController = new;
+    }
     [self.window makeKeyAndVisible];
     
     return YES;

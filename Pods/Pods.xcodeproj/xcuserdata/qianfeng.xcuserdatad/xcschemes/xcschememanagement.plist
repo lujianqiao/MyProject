@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ActionSheetPicker-3.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JSAnimatedImagesView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MSWeakTimer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,12 +52,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>35DB24763BA2F5B9E89A07181805AE6E</key>
+		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
+		<key>4B2E2DFEAB9164C3966D663E68547E9C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4C36B1F5D992ACDFD781AFC537E2D4B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +72,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>647C54BA091AC154E9875783BEFD6589</key>
+		<key>62751715C3E810E27B4E7E6FC29A061A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A53BD8E059B00F71281E9600E4151FD</key>
+		<key>9A332E978FFD529F247C0FE320A8CA00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7F7D2474AF44437B8290F94B86E8CE54</key>
+		<key>AA9A1D541EE10BB8D18D62FB0B067224</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB6420B1106334193AB0F43403A839B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB658585BF9CF06C3CC471ECC82B9D08</key>
 		<dict>
 			<key>primary</key>
 			<true/>
