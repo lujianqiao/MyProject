@@ -22,12 +22,12 @@
     //进入页面先加载职位信息页面
     _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, screenSize.width, screenSize.height)];
     [self.view addSubview:_webView];
-    NSString * url = [NSString stringWithFormat:@"http://www.xnljl.com/BlueCollar/services/company/detail?company_id=%@",self.model.company_id];
+    //NSString * url = [NSString stringWithFormat:@"http://www.xnljl.com/BlueCollar/services/company/detail?company_id=%@",self.model.company_id];
     //     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.model.detailUrl]];
     
-    [request addValue:@"JSESSIONID=10E49800BBE60D6F0F7F56E5DA75CB03; JSESSIONID=1138AAA4536FF512E7C0A684FB0F6426" forHTTPHeaderField:@"Cookie"];
+    [request addValue:Mutable_Cookie forHTTPHeaderField:@"Cookie"];
     
     [_webView loadRequest:request];
     
@@ -79,18 +79,15 @@
     NSInteger index = sender.selectedSegmentIndex;
     switch (index) {
         case 0:{
-            
-         //   workPageModel * model= [[workPageModel alloc]init];
-            
+            //workPageModel * model= [[workPageModel alloc]init];
             //UIWebView加载
             _webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
             [self.view addSubview:_webView];
-            NSString * url = [NSString stringWithFormat:@"http://www.xnljl.com/BlueCollar/services/company/detail?company_id=%@",self.model.company_id];
+            //NSString * url = [NSString stringWithFormat:@"http://www.xnljl.com/BlueCollar/services/company/detail?company_id=%@",self.model.company_id];
            //     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-            
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.model.detailUrl]];
             
-            [request addValue:@"JSESSIONID=C4DB20F2D22566A7079D894A53FCF3F0; JSESSIONID=1138AAA4536FF512E7C0A684FB0F6426" forHTTPHeaderField:@"Cookie"];
+            [request addValue:@"JSESSIONID=01D796D3F94A1BD794D659D2E4824734" forHTTPHeaderField:@"Cookie"];
             
             [_webView loadRequest:request];
             
@@ -106,8 +103,8 @@
             _webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
             [self.view addSubview:_webView];
             NSString * url = [NSString stringWithFormat:@"http://www.xnljl.com/BlueCollar/services/company/detail?company_id=%@",self.model.company_id];
-                 NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-            
+            NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+            //
          //   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.model.detailUrl]];
             
           //  [request addValue:@"JSESSIONID=8D10B900654D6C470693B13368E5E797; JSESSIONID=1138AAA4536FF512E7C0A684FB0F6426" forHTTPHeaderField:@"Cookie"];
@@ -141,6 +138,11 @@
     segmentedController.layer.cornerRadius = 10;
     navigationItem.titleView = segmentedController;
 
+}
+
+#pragma mark - WebViewDelegate 
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
 }
 
 @end

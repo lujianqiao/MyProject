@@ -9,6 +9,9 @@
 #ifndef MyProject_PrefixHeader_pch
 #define MyProject_PrefixHeader_pch
 
+
+#pragma mark - 网络API
+
 //帖子列表URL
 #define LISTURL @"http://www.xnljl.com/BlueCollar/services/posts/list"
 
@@ -32,7 +35,14 @@
 #define WAGELIST @"http://www.xnljl.com/BlueCollar/services/getSalary"
 
 
+#define Mutable_Cookie @"JSESSIONID=5C176C8029489CE6C7AA88D570507A4A"
+
+#pragma mark - 本地控制器属性
+
+//屏幕尺寸
 #define  screenSize [UIScreen mainScreen].bounds.size
+
+#pragma mark - 第三方库
 
 #import <AFNetworking.h>
 #import <SVProgressHUD.h>

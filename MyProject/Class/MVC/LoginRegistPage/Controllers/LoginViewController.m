@@ -31,10 +31,10 @@
     [self.crView startAnimating];
     self.loginButton.layer.cornerRadius = 15;
     // Do any additional setup after loading the view.
+    
     BmobObject * obj = [[BmobObject alloc]initWithClassName:@"job"];
   //  [obj setObject:@"haha" forKey:@"name"];
     [obj saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-        
     }];
     
     //进入页面先自动登陆
@@ -79,7 +79,6 @@
 - (IBAction)pressedButtonLogin:(UIButton *)sender {
     [SVProgressHUD showWithStatus:@"login....."];
     [BmobUser loginWithUsernameInBackground:self.userNameTF.text password:self.userPWTF.text block:^(BmobUser *user, NSError *error) {
-        
         if (user) {
             [SVProgressHUD showSuccessWithStatus:@"登陆成功"];
             RootViewController * root = [[RootViewController alloc]init];
@@ -89,10 +88,9 @@
         {
             [SVProgressHUD showErrorWithStatus:@"登陆失败"];
         }
-        
     }];
-    
 }
+
 - (IBAction)pressedRegisterButton:(UIButton *)sender {
     RegisterViewController * registerh = [self.storyboard instantiateViewControllerWithIdentifier:@"RegisterViewController"];
     [self presentViewController:registerh animated:YES completion:nil];

@@ -54,6 +54,7 @@
         _firstButton.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(change1Name:) name:@"type" object:nil];
         
+        
             }
     if (!_secondLabel) {
         _secondLabel = [[UILabel alloc]init];

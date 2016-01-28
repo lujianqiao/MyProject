@@ -30,15 +30,13 @@
     NewFeatureImgsViewController * new = [[NewFeatureImgsViewController alloc]init];
     NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
     NSString * toWhere = [user objectForKey:@"feature"];
-    if ([toWhere isEqualToString:@"feature"]) {
-        
-        self.window.rootViewController=root;
-
-    }
-    else
-    {
-        self.window.rootViewController = new;
-    }
+//    if ([toWhere isEqualToString:@"feature"]) {
+    self.window.rootViewController=root;
+//    }
+//    else
+//    {
+//        self.window.rootViewController = new;
+//    }
     [self.window makeKeyAndVisible];
     
     return YES;

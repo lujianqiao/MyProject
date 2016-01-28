@@ -181,10 +181,12 @@
     requestManager.requestSerializer  = [AFJSONRequestSerializer serializer];
     requestManager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
    // [requestManager.requestSerializer setValue:@"JSESSIONID=20D5866CAA24F0A8C8FA002EFA616701" forHTTPHeaderField:@"Cookie"];
-      [requestManager.requestSerializer setValue:@"JSESSIONID=1F79A574B813A89651BA4BB652E2676C01" forHTTPHeaderField:@"Cookie"];
+            //  @JSESSIONID=948D0B0627E5A67DBAF5A3ECF6F1FC6D
+    
+      [requestManager.requestSerializer setValue:Mutable_Cookie forHTTPHeaderField:@"Cookie"];
     NSString * url = @"http://www.xnljl.com/BlueCollar/services/job/getlist";
     NSDictionary * dict = @{@"pageSize":@40,@"pageOffset":@40};
-   [requestManager POST:url parameters:dict success:^(AFHTTPRequestOperation *  operation, id   responseObject) {
+   [requestManager POST:url parameters:dict success:^(AFHTTPRequestOperation *  operation,  id   responseObject) {
        
    //    NSLog(@"1111responseObject=%@",responseObject);
        NSArray * dictArr = responseObject[@"data"];
@@ -203,9 +205,10 @@
                [self.dataArry addObject:model];
            }
        }
-       NSData * data = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
-       NSString * str  =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-       NSLog(@"1111responseObject=%@",str);
+       //NSData * data = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil];
+       
+       //NSString * str  =[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+       //NSLog(@"1111responseObject=%@",str);
        
        //公司详情的监听
        for (int index=0; index<self.secPageArr.count; index++) {
@@ -222,7 +225,6 @@
            }
            [SVProgressHUD dismiss];
        });
-       
    } failure:^(AFHTTPRequestOperation *  operation, NSError *  error) {
        
    }];
